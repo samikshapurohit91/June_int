@@ -1,0 +1,20 @@
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+     
+     int arr[] = {6,8,4,13,20,5,10,4,3};
+     int sum = 0;
+     
+     
+     for(int i = 0; i < arr.length; i++){
+         sum = sum + arr[i];
+     }
+     System.out.println("Sum of Array : " + sum);
+    
+    }
+}
+
+
+Output:
+
+Sum of Array : 73
