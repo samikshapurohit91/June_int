@@ -1,0 +1,35 @@
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        System.out.println("Enter the String :");
+        Scanner sc = new Scanner(System.in);
+        String s = sc.next();
+        String rev = "";
+        
+        for(int i = s.length()-1; i>=0; i--){
+            rev = rev +s.charAt(i);
+        }
+         System.out.println("reverse :" + rev);
+        
+        if(s.equals(rev)){
+            System.out.println("Palindrome String");
+        }else{
+            System.out.println("Not Palindrome");
+        }
+    }
+}
+
+
+
+Output:
+
+Enter the String :
+malayalam
+reverse :malayalam
+Palindrome String
+
+
+Enter the String :
+samiksha
+reverse :ahskimas
+Not Palindrome
