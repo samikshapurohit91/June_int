@@ -1,0 +1,30 @@
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        System.out.println("Enter the number:");
+        Scanner sc = new Scanner(System.in);
+        int n  =sc.nextInt();
+        int even = 0;
+        int odd = 0;
+        
+        while(n!= 0){
+            int digit= n%10;
+            if(digit%2== 0){
+                even++;
+            }
+            else{
+                odd++;
+            }
+            n= n/10;
+        }
+        System.out.println("Even no.count:"+even);
+        System.out.println("Odd no. count:"+odd);
+    }
+}
+
+Output:
+
+Enter the number:
+1234567890
+Even no.count:5
+Odd no. count:5
