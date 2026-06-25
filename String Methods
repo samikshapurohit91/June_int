@@ -1,0 +1,242 @@
+In Java, String methods are built-in functions provided by the java.lang.String class
+that allow programmers to manipulate, search, inspect, and compare sequences of characters.
+---------------------------------------------------------------------------------------------------------
+
+METHOD                          | RETURN TYPE | DESCRIPTION
+---------------------------------------------------------------------------------------------------------
+length()                        | int         | Returns the number of characters in the string.
+charAt(int index)               | char        | Returns the character at the specified index.
+substring(int begin)            | String      | Extracts a substring starting from the specified index.
+toLowerCase() / toUpperCase()   | String      | Converts the string to all lowercase or uppercase letters.
+equals(Object obj)              | boolean     | Compares contents of two strings for exact equality.
+equalsIgnoreCase(String str)    | boolean     | Compares contents for equality, ignoring case differences.
+contains(CharSequence s)        | boolean     | Checks if the string contains a specific sequence.
+indexOf(String str)             | int         | Returns the index of the first occurrence of a substring.
+trim() / strip()                | String      | Removes leading and trailing whitespaces.
+replace(char old, char new)     | String      | Replaces all occurrences of an old character with a new one.
+
+
+
+------------------------------------------------------------------------------------------------------------------------
+
+
+public class StringMethodsDemo {
+    public static void main(String[] args) {
+        // Base string initialization
+        String message = "  Hello, Java Programming!  ";
+        System.out.println("Original String: '" + message + "'");
+
+        // 1. Check Length
+        int len = message.length();
+        System.out.println("1. Length: " + len);
+
+        // 2. Trim Whitespace
+        String trimmed = message.trim();
+        System.out.println("2. Trimmed: '" + trimmed + "'");
+
+        // 3. Convert Case
+        System.out.println("3. Upper Case: " + trimmed.toUpperCase());
+        System.out.println("   Lower Case: " + trimmed.toLowerCase());
+
+        // 4. Extract Character by Index
+        char firstChar = trimmed.charAt(0);
+        System.out.println("4. Character at index 0: " + firstChar);
+
+        // 5. Extract Substring
+        // Takes characters from index 7 up to (but not including) index 11
+        String sub = trimmed.substring(7, 11); 
+        System.out.println("5. Substring (7 to 11): " + sub);
+
+        // 6. Search within String
+        boolean hasJava = trimmed.contains("Java");
+        int index = trimmed.indexOf("Prog");
+        System.out.println("6. Contains 'Java'?: " + hasJava);
+        System.out.println("   Index of 'Prog': " + index);
+
+        // 7. Replace Text
+        String replaced = trimmed.replace("Java", "World");
+        System.out.println("7. Replaced String: " + replaced);
+
+        // 8. Equality Comparisons
+        String s1 = "java";
+        String s2 = "JAVA";
+        System.out.println("8. Exact equals (java vs JAVA): " + s1.equals(s2));
+        System.out.println("   Equals ignoring case: " + s1.equalsIgnoreCase(s2));
+    }
+}
+
+
+
+Output:
+
+Original String: '  Hello, Java Programming!  '
+1. Length: 28
+2. Trimmed: 'Hello, Java Programming!'
+3. Upper Case: HELLO, JAVA PROGRAMMING!
+   Lower Case: hello, java programming!
+4. Character at index 0: H
+5. Substring (7 to 11): Java
+6. Contains 'Java'?: true
+   Index of 'Prog': 12
+7. Replaced String: Hello, World Programming!
+8. Exact equals (java vs JAVA): false
+   Equals ignoring case: true
+
+
+
+
+----------------------------------------------------------------------------------
+
+
+# Core Concepts of Java Strings
+
+To work effectively with strings, you must understand how Java manages them under the hood.
+
+- Immutability: String objects cannot be changed once created. Methods like replace() do not modify the original string; they return a brand new one.
+- String Pool: Java optimizes memory by storing one copy of each literal string in a special memory area called the String Constant Pool.
+- Heap Memory: Creating a string using the new keyword (e.g., new String("Java")) bypasses the pool and forces the creation of a brand new object in standard heap memory.
+
+
+------------------------------------------------------------------------------------------------------
+
+Expanded Reference Table (Advanced Methods)
+
+Below is an updated, structured reference table containing advanced and newer methods added to the java.lang.String class.
+
+
+METHOD SIGNATURE                       | RETURN TYPE   | CATEGORY     | DESCRIPTION
+---------------------------------------------------------------------------------------------------------------------------------
+length()                               | int           | Inspection   | Returns the number of characters in the string.
+isEmpty()                              | boolean       | Inspection   | Returns true if length() is 0.
+isBlank()                              | boolean       | Inspection   | Returns true if the string is empty or contains only whitespace.
+charAt(int index)                      | char          | Extraction   | Returns the character at the specified index.
+substring(int beginIndex)              | String        | Extraction   | Extracts a substring starting from the specified index.
+substring(int begin, int end)          | String        | Extraction   | Extracts a substring from start index up to (excluding) end index.
+indexOf(String str)                    | int           | Search       | Returns the index of the first occurrence of a substring.
+lastIndexOf(String str)                | int           | Search       | Returns the index of the last occurrence of a substring.
+contains(CharSequence s)               | boolean       | Search       | Checks if the string contains a specific sequence of text.
+startsWith(String prefix)              | boolean       | Search       | Checks if the string begins with the specified prefix.
+endsWith(String suffix)                | boolean       | Search       | Checks if the string ends with the specified suffix.
+equals(Object obj)                     | boolean       | Comparison   | Compares contents of two strings for exact equality.
+equalsIgnoreCase(String str)           | boolean       | Comparison   | Compares contents for equality, ignoring case differences.
+compareTo(String another)              | int           | Comparison   | Compares two strings alphabetically based on Unicode values.
+toLowerCase()                          | String        | Manipulation | Converts all characters in the string to lowercase.
+toUpperCase()                          | String        | Manipulation | Converts all characters in the string to uppercase.
+trim()                                 | String        | Manipulation | Removes leading and trailing whitespaces.
+strip()                                | String        | Manipulation | Modern alternative to trim() that supports Unicode whitespace.
+replace(char old, char new)            | String        | Manipulation | Replaces all occurrences of an old character with a new one.
+replaceAll(String regex, String repl)  | String        | Manipulation | Replaces all substrings matching a regular expression.
+split(String regex)                    | String[]      | Conversion   | Splits the string into an array around matches of a regex.
+toCharArray()                          | char[]        | Conversion   | Converts the entire string into a new character array.
+valueOf(Object obj)                    | static String | Conversion   | Converts any data type into its string representation.
+join(CharSequence del, Elements...)   | static String | Conversion   | Joins multiple strings together using a specified delimiter.
+repeat(int count)                      | String        | Utility      | Returns a string repeated count times.
+
+
+
+---------------------------------------------------------------------------------------------------------------------
+
+
+
+import java.util.Arrays;
+
+public class AdvancedStringDemo {
+    public static void main(String[] args) {
+        System.out.println("=== 1. Text Parsing & Conversion (split & toCharArray) ===");
+        String rawLogData = "USER_01;Active;Admin;2026-06-25";
+        
+        // Split using a semicolon delimiter
+        String[] logTokens = rawLogData.split(";");
+        System.out.println("Parsed Log Tokens: " + Arrays.toString(logTokens));
+        
+        // Convert a single token into a character array
+        String status = logTokens[1];
+        char[] statusChars = status.toCharArray();
+        System.out.print("Status Characters: ");
+        for (char ch : statusChars) {
+            System.out.print("[" + ch + "] ");
+        }
+        System.out.println("\n");
+
+
+        System.out.println("=== 2. Safe Inspection (isEmpty vs isBlank) ===");
+        String spacePadding = "   \u2007   "; // Contains standard spaces and a Unicode invisible space
+        
+        // isEmpty checks length only; isBlank checks if the string contains only whitespace
+        System.out.println("Is string empty (length == 0)?: " + spacePadding.isEmpty()); 
+        System.out.println("Is string blank (only whitespace)?: " + spacePadding.isBlank());
+        System.out.println();
+
+
+        System.out.println("=== 3. Structural Utility (repeat & join) ===");
+        // Repeat a string pattern to form a UI separator line
+        String starSeparator = "*".repeat(30);
+        System.out.println(starSeparator);
+        
+        // Join standalone values together using a specific path delimiter
+        String fallbackPath = String.join("/", "usr", "local", "bin", "config.json");
+        System.out.println("Generated Filepath: " + fallbackPath);
+        System.out.println(starSeparator);
+        System.out.println();
+
+
+        System.out.println("=== 4. Advanced Search (lastIndexOf, startsWith, endsWith) ===");
+        String urlPath = "/assets/images/heroes/banner.png";
+        
+        // Route actions based on string context boundaries
+        boolean isSecureAsset = urlPath.startsWith("/assets");
+        boolean isImage = urlPath.endsWith(".png") || urlPath.endsWith(".jpg");
+        System.out.println("Starts with /assets?: " + isSecureAsset);
+        System.out.println("Is target an image asset?: " + isImage);
+        
+        // Find the index of the final occurrence of a character
+        int finalSlashIndex = urlPath.lastIndexOf("/");
+        String fileNameOnly = urlPath.substring(finalSlashIndex + 1);
+        System.out.println("Isolated filename: " + fileNameOnly);
+        System.out.println();
+
+
+        System.out.println("=== 5. Pattern Matching & Transformation (replaceAll & strip) ===");
+        String messyInput = "   \n\t ACME Corp - Order #12948-X \t\n   ";
+        
+        // strip() is a modern alternative to trim() that handles Unicode whitespace characters cleanly
+        String cleanInput = messyInput.strip();
+        System.out.println("Stripped input: '" + cleanInput + "'");
+        
+        // Mask confidential data using regular expressions inside replaceAll
+        // Matches all digits (\\d) and replaces them with an X
+        String maskedOrder = cleanInput.replaceAll("\\d", "X");
+        System.out.println("Masked sensitive data: " + maskedOrder);
+    }
+}
+
+
+------------------------------------------------------------------------------------
+
+Output:
+
+
+
+=== 1. Text Parsing & Conversion (split & toCharArray) ===
+Parsed Log Tokens: [USER_01, Active, Admin, 2026-06-25]
+Status Characters: [A] [c] [t] [i] [v] [e] 
+
+=== 2. Safe Inspection (isEmpty vs isBlank) ===
+Is string empty (length == 0)?: false
+Is string blank (only whitespace)?: true
+
+=== 3. Structural Utility (repeat & join) ===
+******************************
+Generated Filepath: usr/local/bin/config.json
+******************************
+
+=== 4. Advanced Search (lastIndexOf, startsWith, endsWith) ===
+Starts with /assets?: true
+Is target an image asset?: true
+Isolated filename: banner.png
+
+=== 5. Pattern Matching & Transformation (replaceAll & strip) ===
+Stripped input: 'ACME Corp - Order #12948-X'
+Masked sensitive data: ACME Corp - Order #XXXXX-X
+
+
