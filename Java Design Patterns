@@ -1,0 +1,34 @@
+Java design patterns are reusable solutions to commonly occurring software design problems.
+Rather than providing copy-paste code, they serve as structured blueprints that help developers write flexible, maintainable, and loosely coupled code.
+
+
+1. Creational Patterns
+
+Creational patterns focus on object creation mechanisms, aiming to create objects in a controlled and flexible way while hiding instantiation logic.
+
+- Singleton: Ensures a class has only one single instance globally across the application.
+- Factory Method: Defines an interface for creating objects but allows subclasses to alter the type of object created.
+- Builder: Constructs complex objects step-by-step, solving the "telescoping constructor" problem when a class has too many optional fields.
+- Prototype: Copies existing objects without making the underlying code dependent on their exact classes.
+
+--------------------------------------------------------------------------------------------------------
+
+2. Structural Patterns
+
+Structural patterns deal with object composition and relationships, helping separate abstract interfaces from real-world implementations so large systems stay flexible.
+
+- Adapter: Acts as a translator, allowing classes with completely incompatible interfaces to seamlessly work together.
+- Decorator: Dynamically adds new behaviors or responsibilities to an object without altering its original class code.
+- Facade: Provides a simplified, high-level interface to a complex subsystem of classes.
+- Proxy: Provides a placeholder or substitute object to control, log, or restrict access to the original object.
+
+---------------------------------------------------------------------------------------------------------------
+
+3. Behavioral Patterns
+
+Behavioral patterns focus on communication, interaction, and responsibility assignment between objects.
+
+- Observer: Creates a subscription model where multiple "observer" objects automatically get notified whenever a central "subject" changes state.
+- Strategy: Encapsulates a family of interchangeable algorithms and allows the client to swap them dynamically at runtime.
+- State: Enables an object to completely alter its behavior when its internal state shifts, eliminating bloated if-else or switch trees.
+- Command: Encapsulates a request as an independent object, allowing operations to be queued, logged, or undone.
