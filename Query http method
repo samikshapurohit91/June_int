@@ -1,0 +1,223 @@
+# HTTP QUERY Method (RFC 9561)
+
+## What is the HTTP QUERY Method?
+
+The **QUERY** method is a new HTTP method standardized in **RFC 9561 (2024)**.
+
+It is designed for **safe, read-only operations** that require a **request body**.
+It allows clients to send complex query parameters in the request body while ensuring that the server does **not modify any data**.
+
+---
+
+# Why was QUERY introduced?
+
+Traditionally:
+
+- **GET** is used to retrieve data but does not reliably support a request body.
+- **POST** supports a request body but is generally used for creating or modifying resources.
+
+The **QUERY** method fills this gap by allowing:
+
+- Complex search requests
+- Advanced filtering
+- Large query parameters
+- Analytics and reporting queries
+- Read-only operations with a request body
+
+---
+
+# Syntax
+
+```http
+QUERY /users
+Content-Type: application/json
+
+{
+    "city": "London",
+    "experience": 5,
+    "skills": [
+        "Java",
+        "Spring Boot"
+    ]
+}
+```
+
+Response
+
+```json
+[
+    {
+        "id": 1,
+        "name": "John"
+    },
+    {
+        "id": 2,
+        "name": "Alice"
+    }
+]
+```
+
+---
+
+# GET vs POST vs QUERY
+
+| Feature               | GET              | POST          | QUERY |
+|----------             |-----             |------         |--------|
+| Retrieves Data        | ✅              | ✅            | ✅ |
+| Modifies Data         | ❌              | Usually ✅    | ❌ |
+| Supports Request Body | Not Recommended | ✅             | ✅ |
+| Safe Method           | ✅              | ❌             | ✅ |
+| Idempotent            | ✅              | Not Always     | ✅ |
+| Best For              | Simple Fetch     | Create/Process | Complex Search |
+
+---
+
+# Advantages
+
+- Supports request body.
+- Ideal for complex filtering.
+- Prevents extremely long URLs.
+- Clearly indicates a read-only operation.
+- Better semantics than using POST for searches.
+- Can improve API clarity and maintainability.
+
+---
+
+# Use Cases
+
+- Product search with multiple filters
+- Advanced user search
+- Analytics dashboards
+- Reporting APIs
+- Elasticsearch-style queries
+- Large filtering criteria
+- Data exploration APIs
+
+---
+
+# Example
+
+### GET Request
+
+```http
+GET /products?category=Laptop&brand=Dell&price=50000
+```
+
+---
+
+### QUERY Request
+
+```http
+QUERY /products
+Content-Type: application/json
+
+{
+    "category": "Laptop",
+    "brand": "Dell",
+    "priceRange": {
+        "min": 30000,
+        "max": 70000
+    },
+    "ram": "16GB",
+    "processor": "Intel i7",
+    "sortBy": "price"
+}
+```
+
+---
+
+# Benefits over GET
+
+❌ GET URLs become very long.
+
+```http
+GET /products?category=Laptop&brand=Dell&ram=16GB&processor=i7&priceMin=30000&priceMax=70000&sort=price
+```
+
+✅ QUERY keeps the URL clean.
+
+```http
+QUERY /products
+
+{
+    "category": "Laptop",
+    "brand": "Dell",
+    "ram": "16GB",
+    "processor": "Intel i7",
+    "priceMin": 30000,
+    "priceMax": 70000
+}
+```
+
+---
+
+# Current Framework Support
+
+At present, most frameworks do **not fully support** the QUERY method.
+
+Most applications still use:
+
+- GET → Simple retrieval
+- POST → Complex search requests
+
+Support for QUERY is expected to grow as the ecosystem adopts **RFC 9561**.
+
+---
+
+# Interview Questions
+
+### 1. What is the HTTP QUERY method?
+
+The QUERY method is a new HTTP method introduced in **RFC 9561 (2024)** for performing **safe, read-only operations** with a request body.
+
+---
+
+### 2. Why do we need QUERY when GET already exists?
+
+GET is intended for retrieving data but does not reliably support a request body. QUERY allows sending complex search criteria in the request body while maintaining read-only semantics.
+
+---
+
+### 3. How is QUERY different from POST?
+
+POST is generally used for creating or modifying resources, whereas QUERY is specifically designed for read-only operations.
+
+---
+
+### 4. Is QUERY a safe HTTP method?
+
+Yes. QUERY is a **safe** method because it does not modify server resources.
+
+---
+
+### 5. Is QUERY idempotent?
+
+Yes. Sending the same QUERY request multiple times produces the same result without changing server state.
+
+---
+
+### 6. When should you use QUERY?
+
+Use QUERY when:
+- Search filters are complex.
+- The request body is large.
+- The operation is read-only.
+- GET URLs would become too long.
+
+---
+
+# Key Points
+
+- Introduced in **RFC 9561 (2024)**
+- Read-only HTTP method
+- Supports request body
+- Safe and idempotent
+- Designed for complex searches and filtering
+- Better alternative to POST for read-only queries
+- Still in the early stages of ecosystem adoption
+
+---
+
+# Summary
+
+The **HTTP QUERY** method is a modern addition to the HTTP protocol that enables **complex, read-only requests** with a request body. It combines the safety of **GET** with the flexibility of **POST**, making it ideal for search, filtering, analytics, and reporting APIs. Although standardized in **RFC 9561**, widespread framework support is still evolving.
