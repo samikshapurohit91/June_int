@@ -7,7 +7,7 @@ The **QUERY** method is a new HTTP method standardized in **RFC 9561 (2024)**.
 It is designed for **safe, read-only operations** that require a **request body**.
 It allows clients to send complex query parameters in the request body while ensuring that the server does **not modify any data**.
 
----
+----
 
 # Why was QUERY introduced?
 
