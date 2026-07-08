@@ -1,6 +1,6 @@
 In Java, String methods are built-in functions provided by the java.lang.String class
 that allow programmers to manipulate, search, inspect, and compare sequences of characters.
----------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------
 
 METHOD                          | RETURN TYPE | DESCRIPTION
 ---------------------------------------------------------------------------------------------------------
