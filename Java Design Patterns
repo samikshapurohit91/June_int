@@ -11,7 +11,7 @@ Creational patterns focus on object creation mechanisms, aiming to create object
 - Builder: Constructs complex objects step-by-step, solving the "telescoping constructor" problem when a class has too many optional fields.
 - Prototype: Copies existing objects without making the underlying code dependent on their exact classes.
 
---------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------
 
 2. Structural Patterns
 
