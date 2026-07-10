@@ -1,0 +1,25 @@
+import java.util.*;
+
+public class FindDuplicatesWithoutStream {
+    public static void main(String[] args) {
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 2, 4, 3, 5);
+        
+        Set<Integer> uniqueElements = new HashSet<>();
+        Set<Integer> duplicates = new HashSet<>();
+        
+        for (Integer num : numbers) {
+          
+            if (!uniqueElements.add(num)) {
+                duplicates.add(num);
+            }
+        }
+        
+        System.out.println("Duplicate items: " + duplicates);
+    }
+}
+
+
+
+Output:
+
+Duplicate items: [2, 3]
