@@ -1,0 +1,31 @@
+public class MissingNumber {
+
+    public static int findMissing(int[] nums, int n) {
+        int expectedSum = n * (n + 1) / 2;
+        int actualSum = 0;
+        
+        for (int num : nums) {
+            actualSum += num;
+        }
+        
+        return expectedSum - actualSum;
+    }
+
+    public static void main(String[] args) {
+        int[] testArray1 = {1, 2, 4, 5}; 
+        int n1 = 5;
+        int missingNum1 = findMissing(testArray1, n1);
+        System.out.println("Test Case 1 - Missing Number is: " + missingNum1);
+
+        int[] testArray2 = {8, 2, 1, 4, 7, 5, 3}; 
+        int n2 = 8;
+        int missingNum2 = findMissing(testArray2, n2);
+        System.out.println("Test Case 2 - Missing Number is: " + missingNum2);
+    }
+}
+
+
+Output:
+
+Test Case 1 - Missing Number is: 3
+Test Case 2 - Missing Number is: 6
