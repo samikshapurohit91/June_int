@@ -1,5 +1,6 @@
 Java design patterns are reusable solutions to commonly occurring software design problems.
-Rather than providing copy-paste code, they serve as structured blueprints that help developers write flexible, maintainable, and loosely coupled code.
+Rather than providing copy-paste code, they serve as structured blueprints that help developers write flexible, maintainable,
+and loosely coupled code.
 
 
 1. Creational Patterns
