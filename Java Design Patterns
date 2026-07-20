@@ -3,7 +3,9 @@ Rather than providing copy-paste code, they serve as structured blueprints that 
 and loosely coupled code.
 
 
+
 1. Creational Patterns
+
 
 Creational patterns focus on object creation mechanisms, aiming to create objects in a controlled and flexible way while hiding instantiation logic.
 
