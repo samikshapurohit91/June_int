@@ -1,6 +1,8 @@
 #  Java Memory Management
 
+
 ##  What is Memory Management?
+
 
 Memory Management is the process of **allocating** and **deallocating** memory in a program.
 
